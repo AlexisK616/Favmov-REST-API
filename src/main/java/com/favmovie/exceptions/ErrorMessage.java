@@ -1,13 +1,16 @@
 package com.favmovie.exceptions;
 
+import lombok.Data;
+
+@Data
 public class ErrorMessage {
     private final String exception;
-    private final String status;
+    private final String path;
     private final String message;
 
-    public ErrorMessage(String exception, String status, String message) {
-        this.exception = exception;
-        this.status = status;
-        this.message = message;
+    public ErrorMessage(Exception exception, String path) {
+        this.exception = exception.getClass().getSimpleName();
+        this.path = exception.getMessage();
+        this.message = path;
     }
 }
